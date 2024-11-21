@@ -6,17 +6,32 @@ const inputText = document.getElementById("input-text");
 
 let currentCell = null; // To keep track of the cell being edited
 
-// Sample data for categories (you can modify this as needed)
+// Predefined categories
 const categories = [
-  "Joke", "Anime", "Vtuber", "Game", "Business", "Music", "Science", "Math", "Drawing", "???" 
+  "Joke", "Anime", "Vtuber", "Game", "Business", "Music", "Science", "Math", "Drawing", "???"
 ];
 
+// Initialize an empty grid with empty strings for each question
+const gameGrid = [
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""]
+];
+
+// Create the grid with categories and empty question spots
 function createGrid() {
-  // Create categories in the first row
+  // Create categories in the first row (static categories)
   for (let col = 0; col < 10; col++) {
     const gridItem = document.createElement("div");
     gridItem.classList.add("grid-item");
-    gridItem.innerText = categories[col] || "Category " + (col + 1);  // Default category name
+    gridItem.innerText = categories[col];  // Pre-set category names
     gridItem.onclick = () => handleCategoryClick(col);
     grid.appendChild(gridItem);
   }
@@ -34,15 +49,12 @@ function createGrid() {
   }
 }
 
+// Handle clicking a category (optional feature)
 function handleCategoryClick(col) {
-  // Ask the user to input a category for this column
-  const category = prompt("Enter a category for this column:");
-  if (category) {
-    categories[col] = category;
-    createGrid(); // Re-create the grid to update the category
-  }
+  alert(`Category: ${categories[col]}`);
 }
 
+// Handle clicking a dollar cell to input the question/answer
 function handleCellClick(row, col, gridItem, score) {
   if (gridItem.classList.contains("clicked")) {
     return; // Prevent multiple clicks on the same cell
@@ -54,21 +66,25 @@ function handleCellClick(row, col, gridItem, score) {
   openPopup();
 }
 
+// Open the popup for entering a question/answer
 function openPopup() {
   inputPopup.style.display = "block";
-  inputText.value = ""; // Clear any previous input
+  inputText.value = gameGrid[currentCell.row][currentCell.col] || ""; // Set default to empty string or previous value
   inputText.focus(); // Focus on the input area
 }
 
+// Close the popup
 function closePopup() {
   inputPopup.style.display = "none"; // Close the popup
 }
 
+// Submit the question/answer
 function submitAnswer() {
   const text = inputText.value;
   if (text.trim()) {
-    // Store the answer/question (for now, just change the cell text)
-    currentCell.gridItem.innerText = text;
+    // Store the answer/question in the grid (update the gameGrid array)
+    gameGrid[currentCell.row][currentCell.col] = text;
+    currentCell.gridItem.innerText = text;  // Update the cell with the input
   }
   closePopup();
 }
