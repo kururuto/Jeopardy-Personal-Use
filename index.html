@@ -1,28 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jeopardy Game</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeopardy Game</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="game-container">
-    <div id="header">
-      <h1>Jeopardy Game</h1>
-    </div>
-    <div id="grid"></div>
-  </div>
-
-  <!-- Pop-up input for questions/answers -->
-  <div id="input-popup" class="popup">
-    <div class="popup-content">
-      <textarea id="input-text" rows="4" cols="50" placeholder="Enter your question or answer here..."></textarea>
-      <button onclick="submitAnswer()">Submit</button>
-      <button onclick="closePopup()">Cancel</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <h1>Jeopardy Game</h1>
+    <div id="board" class="board"></div>
+    <script src="script.js"></script>
 </body>
 </html>
