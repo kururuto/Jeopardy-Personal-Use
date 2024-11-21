@@ -8,7 +8,7 @@ const values = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
 
 const board = document.getElementById('board');
 
-// Generate categories
+// Generate categories as the header row
 categories.forEach(category => {
     const headerCell = document.createElement('div');
     headerCell.className = 'cell header';
@@ -16,15 +16,15 @@ categories.forEach(category => {
     board.appendChild(headerCell);
 });
 
-// Generate value cells in column-wise order
-for (let i = 0; i < values.length; i++) {
-    categories.forEach(category => {
+// Generate value cells in a top-to-bottom pattern
+values.forEach(value => {
+    categories.forEach(() => {
         const valueCell = document.createElement('div');
         valueCell.className = 'cell';
-        valueCell.innerText = `$${values[i]}`;
+        valueCell.innerText = `$${value}`;
         valueCell.addEventListener('click', () => {
-            alert(`You selected ${category} for $${values[i]}!`);
+            alert(`You selected $${value}!`);
         });
         board.appendChild(valueCell);
     });
-}
+});
