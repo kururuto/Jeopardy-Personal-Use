@@ -13,7 +13,8 @@ h1 {
 }
 .board {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(10, 1fr); /* 10 columns for values */
+    grid-template-rows: repeat(11, 1fr); /* 11 rows: 1 for header + 10 for values */
     gap: 5px;
     margin: 20px;
 }
