@@ -16,14 +16,14 @@ categories.forEach(category => {
     board.appendChild(headerCell);
 });
 
-// Generate value cells
-for (let i = 0; i < categories.length; i++) {
-    values.forEach(value => {
+// Generate value cells in column-wise order
+for (let i = 0; i < values.length; i++) {
+    categories.forEach(category => {
         const valueCell = document.createElement('div');
         valueCell.className = 'cell';
-        valueCell.innerText = `$${value}`;
+        valueCell.innerText = `$${values[i]}`;
         valueCell.addEventListener('click', () => {
-            alert(`You selected ${categories[i]} for $${value}!`);
+            alert(`You selected ${category} for $${values[i]}!`);
         });
         board.appendChild(valueCell);
     });
