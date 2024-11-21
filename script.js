@@ -1,33 +1,76 @@
 // script.js
 
 const grid = document.getElementById("grid");
+const inputPopup = document.getElementById("input-popup");
+const inputText = document.getElementById("input-text");
 
-// Sample question and answer data for the grid (you can customize this)
-const data = [
-  ["What is 2+2?", "What is the capital of France?", "Who wrote 'Romeo and Juliet'?", "What is the speed of light?", "What is the tallest mountain?", "What is the square root of 16?", "Who was the first President of the U.S.?", "What is the chemical symbol for water?", "What is the currency of Japan?", "What is the largest planet in our solar system?"],
-  ["What is 5+3?", "What is the capital of Japan?", "Who painted the Mona Lisa?", "What is the chemical symbol for gold?", "What is the longest river in the world?", "What is the square of 9?", "Who wrote '1984'?", "What is the largest ocean?", "What is the smallest country in the world?", "What is the distance between Earth and the Sun?"],
-  // Add more rows as needed
-  // ... up to 10 rows
+let currentCell = null; // To keep track of the cell being edited
+
+// Sample data for categories (you can modify this as needed)
+const categories = [
+  "", "", "", "", "", "", "", "", "", "" // Initially empty categories for row 1
 ];
 
 function createGrid() {
-  for (let row = 0; row < 10; row++) {
+  // Create categories in the first row
+  for (let col = 0; col < 10; col++) {
+    const gridItem = document.createElement("div");
+    gridItem.classList.add("grid-item");
+    gridItem.innerText = categories[col] || "Category " + (col + 1);  // Default category name
+    gridItem.onclick = () => handleCategoryClick(col);
+    grid.appendChild(gridItem);
+  }
+
+  // Create game grid with $100 to $1000 values
+  for (let row = 1; row < 11; row++) {
     for (let col = 0; col < 10; col++) {
       const gridItem = document.createElement("div");
       gridItem.classList.add("grid-item");
-      gridItem.innerText = `$${(row + 1) * (col + 1) * 100}`;  // Displaying dollar values as placeholders for each cell
-      gridItem.onclick = () => handleClick(row, col, gridItem);
+      const score = row * 100; // Score increases from 100 to 1000
+      gridItem.innerText = `$${score}`;
+      gridItem.onclick = () => handleCellClick(row, col, gridItem, score);
       grid.appendChild(gridItem);
     }
   }
 }
 
-function handleClick(row, col, gridItem) {
+function handleCategoryClick(col) {
+  // Ask the user to input a category for this column
+  const category = prompt("Enter a category for this column:");
+  if (category) {
+    categories[col] = category;
+    createGrid(); // Re-create the grid to update the category
+  }
+}
+
+function handleCellClick(row, col, gridItem, score) {
   if (gridItem.classList.contains("clicked")) {
-    return;  // Prevent multiple clicks
+    return; // Prevent multiple clicks on the same cell
   }
   gridItem.classList.add("clicked");
-  gridItem.innerText = data[row][col] || "No question";  // Show the question/answer
+
+  // Show the popup to input a question or answer
+  currentCell = { row, col, gridItem, score };
+  openPopup();
+}
+
+function openPopup() {
+  inputPopup.style.display = "block";
+  inputText.value = ""; // Clear any previous input
+  inputText.focus(); // Focus on the input area
+}
+
+function closePopup() {
+  inputPopup.style.display = "none"; // Close the popup
+}
+
+function submitAnswer() {
+  const text = inputText.value;
+  if (text.trim()) {
+    // Store the answer/question (for now, just change the cell text)
+    currentCell.gridItem.innerText = text;
+  }
+  closePopup();
 }
 
 createGrid();
