@@ -8,7 +8,7 @@ let currentCell = null; // To keep track of the cell being edited
 
 // Sample data for categories (you can modify this as needed)
 const categories = [
-  "", "", "", "", "", "", "", "", "", "" // Initially empty categories for row 1
+  "Joke", "Anime", "Vtuber", "Game", "Business", "Music", "Science", "Math", "Drawing", "???" 
 ];
 
 function createGrid() {
