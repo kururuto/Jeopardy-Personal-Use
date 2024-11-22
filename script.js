@@ -41,7 +41,8 @@ values.forEach((value, index) => {
         const valueCell = document.createElement('div');
         valueCell.className = 'cell';
         valueCell.innerText = `$${value}`;
-        valueCell.addEventListener('click', () => {
+        valueCell.addEventListener('click', (e) => {
+            e.preventDefault();  // Prevent any unwanted navigation (this may fix the issue)
             showPopup(value, questions[index]);
         });
         board.appendChild(valueCell);
