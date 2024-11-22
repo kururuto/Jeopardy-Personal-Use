@@ -9,17 +9,116 @@ const values = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
 
 // 2D array mapping categories and values to their respective questions
 const questions = [
-    [
-        "What is the capital of France?", 
-        "What is the punchline of a typical dad joke?", 
-        "How many episodes are in 'One Piece'?", 
-        "Who created Super Mario?",
-        "What is the smallest planet in the solar system?",
-        "Who won the 2021 Grammy for Album of the Year?",
-        "What is the largest species of shark?",
-        "What is the quadratic formula?",
-        "What famous artist is known for the Mona Lisa?",
-        "What are the dimensions of a standard piece of paper?"
+    [                                
+        "Make a cat noise", 
+        "Hold your breath for 10 seconds ", 
+        "Do An Impressions of Any Character / Person", 
+        "Communicate Only By Making Animal Noises for Next 10 Minutes (Fail = No Points)",
+        "Speak Like You’re Underwater for Next 10 Minutes (Fail = No Points)",
+        "Speak With Nya at The End of Every Sentence for 30 Minutes (Fail = No Points)",
+        "",
+        "",
+        "",
+        "Pretend You're Invisible For 30 Minutes (Fail = No Points)"
+    ], [
+        "Who created Naruto?",
+        "What is the longest-running anime?",
+        "What is the tallest mountain?",
+        "Who won the 2020 Best Picture Oscar?",
+        "What is 2+2?",
+        "Who is the lead singer of The Beatles?",
+        "What is the chemical symbol for water?",
+        "What is the speed of light?",
+        "Who wrote the Mona Lisa?",
+        "What is the largest planet in our solar system?"
+    ], [
+        "Who created Naruto?",
+        "What is the longest-running anime?",
+        "What is the tallest mountain?",
+        "Who won the 2020 Best Picture Oscar?",
+        "What is 2+2?",
+        "Who is the lead singer of The Beatles?",
+        "What is the chemical symbol for water?",
+        "What is the speed of light?",
+        "Who wrote the Mona Lisa?",
+        "What is the largest planet in our solar system?"
+    ], [
+        "Who created Naruto?",
+        "What is the longest-running anime?",
+        "What is the tallest mountain?",
+        "Who won the 2020 Best Picture Oscar?",
+        "What is 2+2?",
+        "Who is the lead singer of The Beatles?",
+        "What is the chemical symbol for water?",
+        "What is the speed of light?",
+        "Who wrote the Mona Lisa?",
+        "What is the largest planet in our solar system?"
+    ], [
+        "Who created Naruto?",
+        "What is the longest-running anime?",
+        "What is the tallest mountain?",
+        "Who won the 2020 Best Picture Oscar?",
+        "What is 2+2?",
+        "Who is the lead singer of The Beatles?",
+        "What is the chemical symbol for water?",
+        "What is the speed of light?",
+        "Who wrote the Mona Lisa?",
+        "What is the largest planet in our solar system?"
+    ], [
+        "Who created Naruto?",
+        "What is the longest-running anime?",
+        "What is the tallest mountain?",
+        "Who won the 2020 Best Picture Oscar?",
+        "What is 2+2?",
+        "Who is the lead singer of The Beatles?",
+        "What is the chemical symbol for water?",
+        "What is the speed of light?",
+        "Who wrote the Mona Lisa?",
+        "What is the largest planet in our solar system?"
+    ], [
+        "Who created Naruto?",
+        "What is the longest-running anime?",
+        "What is the tallest mountain?",
+        "Who won the 2020 Best Picture Oscar?",
+        "What is 2+2?",
+        "Who is the lead singer of The Beatles?",
+        "What is the chemical symbol for water?",
+        "What is the speed of light?",
+        "Who wrote the Mona Lisa?",
+        "What is the largest planet in our solar system?"
+    ], [
+        "Who created Naruto?",
+        "What is the longest-running anime?",
+        "What is the tallest mountain?",
+        "Who won the 2020 Best Picture Oscar?",
+        "What is 2+2?",
+        "Who is the lead singer of The Beatles?",
+        "What is the chemical symbol for water?",
+        "What is the speed of light?",
+        "Who wrote the Mona Lisa?",
+        "What is the largest planet in our solar system?"
+    ], [
+        "Who created Naruto?",
+        "What is the longest-running anime?",
+        "What is the tallest mountain?",
+        "Who won the 2020 Best Picture Oscar?",
+        "What is 2+2?",
+        "Who is the lead singer of The Beatles?",
+        "What is the chemical symbol for water?",
+        "What is the speed of light?",
+        "Who wrote the Mona Lisa?",
+        "What is the largest planet in our solar system?"
+    ], [
+        "Who created Naruto?",
+        "What is the longest-running anime?",
+        "What is the tallest mountain?",
+        "Who won the 2020 Best Picture Oscar?",
+        "What is 2+2?",
+        "Who is the lead singer of The Beatles?",
+        "What is the chemical symbol for water?",
+        "What is the speed of light?",
+        "Who wrote the Mona Lisa?",
+        "What is the largest planet in our solar system?"
     ], [
         "Who created Naruto?",
         "What is the longest-running anime?",
