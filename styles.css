@@ -1,102 +1,67 @@
-/* General styling */
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
+// JavaScript code to generate the Jeopardy board
+const categories = [
+    "Joke", "Anime", "Vtuber", "Game", 
+    "Business", "Music", "Science", "Math", 
+    "Drawing", "???"
+];
+const values = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+const questions = [
+    "What is the capital of France?", 
+    "Who created Naruto?", 
+    "What is the tallest mountain?", 
+    "Who won the 2020 Best Picture Oscar?", 
+    "What is 2+2?", 
+    "Who is the lead singer of The Beatles?", 
+    "What is the chemical symbol for water?", 
+    "What is the speed of light?", 
+    "Who wrote the Mona Lisa?", 
+    "What is the largest planet in our solar system?"
+];
+
+const board = document.getElementById('board');
+const overlay = document.createElement('div');
+overlay.className = 'overlay';
+document.body.appendChild(overlay);
+
+const popup = document.createElement('div');
+popup.className = 'popup';
+document.body.appendChild(popup);
+
+// Generate categories as the header row
+categories.forEach(category => {
+    const headerCell = document.createElement('div');
+    headerCell.className = 'cell header';
+    headerCell.innerText = category;
+    board.appendChild(headerCell);
+});
+
+// Generate value cells in a top-to-bottom pattern
+values.forEach((value, index) => {
+    categories.forEach((category, colIndex) => {
+        const valueCell = document.createElement('div');
+        valueCell.className = 'cell';
+        valueCell.innerText = `$${value}`;
+        valueCell.addEventListener('click', (e) => {
+            e.preventDefault();  // Prevent any unwanted navigation (this may fix the issue)
+            showPopup(value, questions[index]);
+        });
+        board.appendChild(valueCell);
+    });
+});
+
+// Function to show the popup
+function showPopup(value, question) {
+    popup.innerHTML = `
+        <h2>Question for $${value}</h2>
+        <p>${question}</p>
+        <button onclick="closePopup()">Close</button>
+    `;
+    popup.style.display = 'block';
+    overlay.style.display = 'block';
 }
 
-h1 {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    margin: 0;
-}
-
-/* Style for the Jeopardy board */
-.board {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr); /* 10 columns for the categories */
-    grid-template-rows: repeat(11, 1fr); /* 11 rows: 1 for header + 10 for value rows */
-    gap: 10px;
-    margin: 20px;
-    padding: 10px;
-}
-
-/* Each cell on the board */
-.cell {
-    background-color: #007bff;
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    padding: 30px 20px;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.cell:hover {
-    background-color: #0056b3;
-    transform: scale(1.1); /* Make the cell slightly grow when hovered */
-}
-
-.header {
-    background-color: lightgray;
-    color: black;
-    font-size: 22px;
-    font-weight: bold;
-    padding: 15px;
-}
-
-/* Styling for the popup */
-.popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    width: 60%;
-    max-width: 600px;
-    text-align: center;
-}
-
-.popup h2 {
-    margin-bottom: 20px;
-}
-
-.popup p {
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-.popup button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.popup button:hover {
-    background-color: #45a049;
-}
-
-/* Overlay that dims the background */
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+// Function to close the popup
+function closePopup() {
+    popup.style.display = 'none';
+    overlay.style.display = 'none';
 }
